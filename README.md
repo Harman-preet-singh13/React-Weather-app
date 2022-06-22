@@ -1,7 +1,8 @@
 Hey there, I created this weather app using react. Feel free to use it.
 Just add your api key in .env file
 
-.env 
+.env file
+
 REACT_APP_API_URL = 'https://api.openweathermap.org/data/2.5'
 REACT_APP_API_KEY = // Add api key from open weather map
 REACT_APP_ICON_URL = 'https://openweathermap.org/img/w'
