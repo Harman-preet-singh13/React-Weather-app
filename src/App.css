@@ -1,38 +1,96 @@
 .App {
+  width: 80rem;
   text-align: center;
+  padding-top: 6rem;
+  position: absolute;
+  left: 20%;
+  bottom: 3%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container { 
+  background-color: whitesmoke;
+}
+.bg-img{
+  width: 120rem;
+  height: 60rem ;
+}
+.searchbar {
+  padding-top: 5rem;
+  padding-left: 300px;
+  width: 60rem;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.btn-padding {
+  padding: 5px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.display-box {
+  height: 40rem;
+}
+
+.date-container {
+
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-direction: row;
 }
 
-.App-link {
-  color: #61dafb;
+.date-padding {
+  padding-left: 230px;
+  font-size: 23px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.location-name {
+  padding-top: 40px;
+  font-weight: 400;
+  font-family: monospace;
+}
+
+.weather-description {
+  padding-top: 20px;
+}
+
+.temp-size {
+  font-size: 100px;
+  font-family: monospace;
+}
+
+.description-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.weather-desc {
+  font-size: 23px;
+  padding-top: 10px;
+  font-family: monospace;
+}
+
+.weather-icon {
+  padding-left: 500px;
+}
+
+.windspeed {
+  font-size: 25px;
+  font-family: monospace;
+}
+
+.sun-container {
+  display: flex;
+  flex-direction: row;
+  width: 25rem;
+  height: 25rem;
+}
+
+.sun {
+  padding-left: 320px;
+}
+
+.sun-img {
+  width: 9rem;
+  height: 9rem;
+}
+
+.sun-font {
+  font-size: 19px;
 }
