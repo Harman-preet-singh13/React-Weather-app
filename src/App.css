@@ -1,96 +1,149 @@
-.App {
-  width: 80rem;
-  text-align: center;
-  padding-top: 6rem;
-  position: absolute;
-  left: 20%;
-  bottom: 3%;
+.header {
+  padding-top: 2rem;
 }
 
-.container { 
-  background-color: whitesmoke;
+
+.App {
+  background-color: rgb(218, 238, 253);
+  padding: 2rem;
+  background-image: url(./weather.jpg);
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: center;
+
 }
-.bg-img{
-  width: 120rem;
-  height: 60rem ;
+
+.searchbar-container {
+  display: grid;
+  flex-direction: column;
 }
+
 .searchbar {
-  padding-top: 5rem;
-  padding-left: 300px;
-  width: 60rem;
+  padding: 1rem;
+  text-align: center;
+}
+
+.form-control {
+  max-width: 35rem;
 
 }
 
 .btn-padding {
-  padding: 5px;
+  padding: 0.4rem;
+  text-align: center;
 }
 
-.display-box {
-  height: 40rem;
+.location-name {
+  padding-top: 2rem;
+  color: black;
+  font-size: clamp(1rem, 5vh, 4rem);
+  text-align: center;
+  text-decoration: underline;
+  text-decoration: underline overline;
 }
 
 .date-container {
 
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border: 1px black;
+  background-color: aliceblue;
 }
 
-.date-padding {
-  padding-left: 230px;
-  font-size: 23px;
+
+
+.date-padding1 {
+  flex: 1;
+  font-size: clamp(0.5rem, 2vh, 4rem);
+  text-decoration: underline;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+
 }
 
-.location-name {
-  padding-top: 40px;
-  font-weight: 400;
-  font-family: monospace;
+.date-padding2 {
+  flex: 1;
+  font-size: clamp(0.5rem, 2vh, 4rem);
+  text-decoration: underline;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.date-padding3 {
+  flex: 1;
+  font-size: clamp(0.5rem, 2vh, 4rem);
+  text-decoration: underline;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .weather-description {
-  padding-top: 20px;
+  padding-top: 2rem;
 }
 
 .temp-size {
-  font-size: 100px;
-  font-family: monospace;
+  text-align: center;
+  font-size: clamp(1rem, 4.5vh, 4rem);
+  font-weight: 500;
+  color: rgb(56, 56, 56);
+  border: 1px solid rgb(200, 200, 200) !important;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .description-container {
   display: flex;
-  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .weather-desc {
-  font-size: 23px;
-  padding-top: 10px;
-  font-family: monospace;
+  font-size: clamp(0.5rem, 3.4vh, 1.7rem);
+  font-style: italic;
 }
 
 .weather-icon {
-  padding-left: 500px;
+  padding-bottom: 0.5rem;
+}
+
+.wind-conatiner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .windspeed {
-  font-size: 25px;
-  font-family: monospace;
+  font-size: clamp(0.5rem, 3vh, 1.7rem);
 }
 
 .sun-container {
+  padding-top: 2rem;
   display: flex;
-  flex-direction: row;
-  width: 25rem;
-  height: 25rem;
+  align-items: center;
+  justify-content: center;
 }
 
+
 .sun {
-  padding-left: 320px;
+  justify-content: center;
+
 }
 
 .sun-img {
-  width: 9rem;
-  height: 9rem;
+  width: 8rem;
 }
 
 .sun-font {
-  font-size: 19px;
+  font-size: clamp(0.5rem, 2vh, 5rem);
+}
+
+.sun-rise {
+  flex: 3rem;
+}
+
+.footer-container {
+  text-align: center;
 }

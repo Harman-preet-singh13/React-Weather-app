@@ -1,14 +1,13 @@
 import './App.css';
 import React, { useEffect, useState } from "react"
 import Weather from "./components/WeatherData"
-import img1 from "./components/weather.jpg"
 
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeProvider } from '@mui/material'
+
+
 import Button from '@mui/material/Button';
 import TextField from "@mui/material/TextField";
-
+import Container from '@mui/material/Container';
 
 export default function App() {
 
@@ -41,30 +40,28 @@ export default function App() {
 
 
   return (
-    <div>
-      <img src={img1} className="bg-img" />
-    <div className="App">
-      
-      <div className="container">
-        
-          <div className='searchbar'>
-            <TextField
-              type="text"
-              id="location-name"
-              className="form-control"
-              onChange={inputHandler}
-              
-              size="small"
-              variant="outlined"
-              color="primary"
-              label="Search"
-            />
-          </div>
 
-          <div className='btn-padding'>
-            <Button variant="contained" onClick={submitHandler}>
-              Search
-            </Button>
+    <div className="header">
+      <Container fixed>
+        <div className="App">
+          <div className="searchbar-container">
+            <div className='searchbar'>
+              <TextField
+                type="text"
+                id="location-name"
+                className="form-control"
+                onChange={inputHandler}
+                size="small"
+                variant="outlined"
+                color="primary"
+                label="Search"
+              />
+            </div>
+            <div className='btn-padding'>
+              <Button variant="contained" onClick={submitHandler} className="btn">
+                Search
+              </Button>
+            </div>
           </div>
 
           <div className="display-box">
@@ -75,11 +72,15 @@ export default function App() {
                 <div>Loading...</div>
               )}
           </div>
-        
-      </div>
-      <p className="footer">Created by <a href="https://my-portfolio-three-gules.vercel.app/" target="_blank" rel="noreferrer">Harm2N</a></p>
+        </div>
+        <div className='footer-container'>
+          <p className="footer">Created by <a href="https://www.harmanpreetsingh.me/" target="_blank" rel="noreferrer">Harm2N</a></p>
+        </div>
+      </Container >
+    </div >
 
-    </div>
-    </div>
+
+
+
   );
 }
