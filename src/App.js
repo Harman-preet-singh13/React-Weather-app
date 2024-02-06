@@ -1,86 +1,59 @@
-import './App.css';
-import React, { useEffect, useState } from "react"
-import Weather from "./components/WeatherData"
-
-
-
-
-import Button from '@mui/material/Button';
-import TextField from "@mui/material/TextField";
-import Container from '@mui/material/Container';
+import "./App.css";
+import React, { useEffect, useState } from "react";
+import Weather from "./components/WeatherData";
+import axios from "axios";
 
 export default function App() {
-
-
-  const [apiData, setApiData] = useState({});
-  const [getState, setGetState] = useState("Jalandhar")
-  const [city, setCity] = useState("Jalandhar")
+  const [weatherData, setWeatherData] = useState(null);
+  const [city, setCity] = useState("Jalandhar");
 
   const apiKey = `ac0f4dd188c4497b28f7f420aeb2b31b`;
   const apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
 
   useEffect(() => {
-    fetch(apiUrl)
-      .then((res) => res.json())
-      .then(data => {
-        setApiData(data)
-        console.log(data)
+    axios
+      .get(apiUrl)
+      .then((response) => {
+        setWeatherData(response.data);
       })
-  }, [apiUrl])
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [apiUrl]);
 
-  const inputHandler = (e) => {
-    setGetState(e.target.value)
+
+  if (!weatherData){
+    return <div>Loading...</div>
   }
-
-  const submitHandler = () => {
-    setCity(getState)
-    console.log(city)
-  }
-
-
 
   return (
-
-    <div className="header">
-      <Container fixed>
-        <div className="App">
-          <div className="searchbar-container">
-            <div className='searchbar'>
-              <TextField
-                type="text"
-                id="location-name"
-                className="form-control"
-                onChange={inputHandler}
-                size="small"
-                variant="outlined"
-                color="primary"
-                label="Search"
-              />
-            </div>
-            <div className='btn-padding'>
-              <Button variant="contained" onClick={submitHandler} className="btn">
-                Search
-              </Button>
-            </div>
-          </div>
+    <div className="max-w-[1440px] mx-auto">
+      <div className="h-[90vh] flex justify-center items-center ">
+        <main className="bg-slate-200 rounded py-20">
+          <section className="px-10 flex gap-2 justify-center text-2xl font-medium font-mono">
+            <h1 className="text-slate-500">Right Now in</h1>
+            <input
+              className="max-w-[200px] text-center outline-none bg-slate-200 border-b border-slate-500 font-semibold"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            {weatherData && weatherData.weather && (
+              <h1 className="text-slate-500">,it's {weatherData.weather[0].main}</h1>
+            )}
+          </section>
 
           <div className="display-box">
-            {(typeof apiData.main != 'undefined') ? (
-              <Weather weatherData={apiData} />
+            {(typeof weatherData.main != 'undefined') ? (
+              
+              <Weather weatherData={weatherData} />
             ) :
               (
                 <div>Loading...</div>
               )}
           </div>
-        </div>
-        <div className='footer-container'>
-          <p className="footer">Created by <a href="https://www.harmanpreetsingh.me/" target="_blank" rel="noreferrer">Harm2N</a></p>
-        </div>
-      </Container >
-    </div >
 
-
-
-
+        </main>
+      </div>
+    </div>
   );
 }
