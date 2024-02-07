@@ -10,6 +10,11 @@ import {
 import { database } from "../firebase";
 import { UserAuth } from "../context/AuthContext";
 import Modal from "react-modal";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
+
+
 
 export default function AdminTable() {
   const { user } = UserAuth();
@@ -18,6 +23,11 @@ export default function AdminTable() {
   const [loading, setLoading] = useState(true);
   const [username, setUsername] = useState("");
   const [isOpen, setIsOpen] = useState(false);
+
+  const [filterValue, setFilterValue] = useState("");
+  const [selectedState, setSelectedState] = useState("");
+  const [startDate, setStartDate] = useState(new Date());
+
 
   function openModal() {
     setIsOpen(true);
@@ -72,8 +82,8 @@ export default function AdminTable() {
       });
     }
 
-    setUsername(" ")
-    closeModal()
+    setUsername(" ");
+    closeModal();
   };
 
   const deleteUser = async (id) => {
@@ -90,7 +100,35 @@ export default function AdminTable() {
     }
   };
 
-  console.log(users);
+  const handleUsernameFilter = (e) => {
+    setFilterValue(e.target.value);
+  };
+
+  const handleUserStateFilter = (e) => {
+    setSelectedState(e.target.value);
+  };
+
+  const handleDateChange = (date) => {
+    setStartDate(date);
+  };
+
+  let filteredUsers = users.filter((user) => {
+    if (selectedState === 'active') {
+      return user.isActive;
+    } else if (selectedState === 'inactive') {
+      return !user.isActive;
+    }
+    return true; 
+  }).filter((user) => {
+    if (!startDate) return true; 
+    const userDate = new Date(user.addedDate);
+    return userDate.toDateString() === startDate.toDateString();
+  }).filter((user) =>
+    user.displayName.toLowerCase().includes(filterValue.toLowerCase())
+  );
+
+
+
 
   return (
     <div className="max-w-[1024px] mt-2 mx-auto bg-white h-[90vh]">
@@ -102,7 +140,7 @@ export default function AdminTable() {
         >
           Add User
         </button>
-
+ 
         <Modal
           isOpen={isOpen}
           onRequestClose={closeModal}
@@ -123,9 +161,10 @@ export default function AdminTable() {
 
               <div className="text-center">
                 <button
-                type="submit"
-                onClick={addUser}
-                className="my-2 font-semibold px-2 py-1 border border-blue-400 rounded-md hover:text-white hover:bg-blue-400">
+                  type="submit"
+                  onClick={addUser}
+                  className="my-2 font-semibold px-2 py-1 border border-blue-400 rounded-md hover:text-white hover:bg-blue-400"
+                >
                   Add user
                 </button>
               </div>
@@ -133,6 +172,38 @@ export default function AdminTable() {
           </div>
         </Modal>
       </div>
+
+      <div className="my-5 mx-4 ">
+        <input
+          type="text"
+          className="border w-full p-2 rounded-md text-slate-700 outline-blue-600"
+          placeholder="Filter by username"
+          value={filterValue}
+          onChange={handleUsernameFilter}
+        />
+
+        <div className="my-2 flex justify-between">
+          <div>
+            <lable className="font-semibold">Select User State:</lable>
+          <select
+          onChange={handleUserStateFilter}
+          value={selectedState}
+          className=" border p-1 rounded-md"
+          >
+            <option value="">User State</option>
+            <option value="active">Active</option>
+            <option value="inactive">In-Active</option>
+          </select>
+          </div>
+          
+          <div>
+          <lable className="font-semibold">Select Date:</lable>
+          <DatePicker className=" border p-1 w-28" selected={startDate} onChange={handleDateChange} />
+
+          </div>
+        </div>
+      </div>
+
       <div className="mx-4 my-5 text-center">
         <table>
           <thead>
@@ -149,11 +220,11 @@ export default function AdminTable() {
                 <td colSpan="4">Loading User...</td>
               </tr>
             ) : (
-              users.map((user) => (
+              filteredUsers.map((user) => (
                 <tr key={user.uid}>
                   <td>{user.displayName}</td>
                   <td>{convertTimestampToDate(user.addedDate)}</td>
-                  <td>{user.isActive ? "Active" : "Inactive"}</td>
+                  <td>{user.isActive ? "Active" : "In-active"}</td>
                   <td>
                     <button
                       onClick={() => deleteUser(user.id)}
