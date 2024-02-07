@@ -8,3 +8,44 @@ body{
   -o-background-size: cover;
   background-size: cover;
 }
+
+table {
+  font-family: arial, sans-serif !important;
+  border-collapse: collapse !important;
+  width: 100% !important;
+  
+}
+
+td, th {
+  border: 1px solid #dddddd !important;
+  text-align: left !important;
+  padding: 8px !important;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd !important;
+}
+
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+  
+ 
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

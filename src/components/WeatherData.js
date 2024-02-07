@@ -54,18 +54,18 @@ function Weather({ weatherData }) {
 
   return (
     <>
-      <div className="mt-10 flex justify-evenly">
+      <div className="mt-[50px] flex justify-evenly">
         <div className=" self-center">
           <img
             src={getWeatherGif(weatherMain)}
-            className=""
+            className="w-12 rounded-full"
             alt="weather-gif"
           />
         </div>
         <div className="self-center">
-          <h2 className="">{temperature}&deg;{unit}</h2>
+          <h2 className="text-[80px]">{temperature}&deg;{unit}</h2>
         </div>
-        <div>
+        <div className="self-center">
           <p className="flex gap-1">
             <TiWeatherWindy className="text-2xl" />{" "}
             {mtokm(weatherData.wind.speed)} km/h
@@ -77,11 +77,11 @@ function Weather({ weatherData }) {
         </div>
       </div>
 
-      <div className="my-5 text-slate-500 mx-[150px] border-1 border-slate-600 rounded">
-        <p className="flex gap-3 my-2 mx-2 border-b-2 border-slate-300">
+      <div className="my-[50px] text-slate-500 max-w-[500px] mx-auto border font-mono  shadow-md rounded">
+        <p className="flex gap-3 my-2 mx-2 border-b-2 border-slate-300 ">
           Sunrise
           <FiSunrise className="text-2xl" />:{" "}
-          <span className="text-slate-800">
+          <span className="text-slate-600 font-semibold">
             {new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString(
               "en-IN"
             )}{" "}
@@ -91,7 +91,7 @@ function Weather({ weatherData }) {
         <p className="flex gap-3 my-2 mx-2 border-b-2 border-slate-300">
           Sunset
           <FiSunset className="text-2xl" />:{" "}
-          <span className="text-slate-800">
+          <span className="text-slate-600 font-semibold">
             {new Date(weatherData.sys.sunset * 1000).toLocaleTimeString(
               "en-IN"
             )}{" "}
@@ -101,7 +101,7 @@ function Weather({ weatherData }) {
         <p className="flex gap-3 my-2 mx-2 border-b-2 border-slate-300">
           Max-Temp
           <FaTemperatureHigh className="text-2xl" />:{" "}
-          <span className="text-slate-800">
+          <span className="text-slate-600 font-semibold">
             {" "}
             {maxTemp}&deg;{unit}
           </span>
@@ -109,7 +109,7 @@ function Weather({ weatherData }) {
         <p className="flex gap-3 my-2 mx-2 border-b-2 border-slate-300">
           Min-Temp
           <FaTemperatureLow className="text-2xl" />:{" "}
-          <span className="text-slate-800">
+          <span className="text-slate-600 font-semibold">
             {" "}
             {minTemp}&deg;{unit}
           </span>
@@ -117,14 +117,14 @@ function Weather({ weatherData }) {
         <p className="flex gap-3 my-2 mx-2 ">
           Feels Like
           <FaTemperatureEmpty className="text-2xl" />:{" "}
-          <span className="text-slate-800">
+          <span className="text-slate-600 font-semibold">
             {" "}
             {feelsLike}&deg;{unit}
           </span>
         </p>
       </div>
 
-      <div className="mt-10 text-center">
+      <div className="mt-10 text-center text-xl">
         <button onClick={() => setUnit("F")} className="hover:font-semibold">&deg;F</button>
         {" | "}
         <button onClick={() => setUnit("C")} className="hover:font-semibold">&deg;C</button>
